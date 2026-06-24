@@ -1,4 +1,6 @@
-﻿namespace Flight_Management_System
+﻿using Flight_Management_System.Models;
+
+namespace Flight_Management_System
 {
     internal class Program
     {
@@ -28,8 +30,32 @@
         }//Mainmenu
         public static void RegisterPassenger()
         {
+            Console.WriteLine("Please enter your name:");
+            string PsName = Console.ReadLine();
+            
+            if (string.IsNullOrWhiteSpace(PsName))
+            {
+                Console.WriteLine("Error: Passenger name cannot be empty");
+                return;
+            }
+            Console.WriteLine($"Hello welcome:  {PsName}");
 
-        
+
+            Console.WriteLine("Please enter phone number: ");
+            string PhNumber =  Console.ReadLine();
+            Console.WriteLine($"{PsName} your phone number is {PhNumber}");
+
+            int newId = FlightContext.passengers.Count + 1;
+            Passenger newPassenger = new Passenger
+            {
+                passengerId =newId,
+                passengerName = PsName,
+                passengerPhone = PhNumber
+            };
+
+            FlightContext.passengers.Add(newPassenger);
+            Console.WriteLine($"\n Passenger registered successfully! Your ID is: {newId}");
+
         }//1
 
         public static void AddAircraft()
