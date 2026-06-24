@@ -42,7 +42,7 @@ namespace Flight_Management_System
 
 
             Console.WriteLine("Please enter phone number: ");
-            string PhNumber =  Console.ReadLine();
+            double PhNumber = double.Parse (Console.ReadLine());
             Console.WriteLine($"{PsName} your phone number is {PhNumber}");
 
             int newId = FlightContext.passengers.Count + 1;
@@ -60,6 +60,43 @@ namespace Flight_Management_System
 
         public static void AddAircraft()
         {
+            Console.WriteLine("Please enter Airccraft model:");
+            string aircraftName = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(aircraftName))
+
+            {
+                Console.WriteLine("Error: AirCraft model cannot be empty . ");
+                return ;
+            }
+
+
+            Console.WriteLine("Please enter total seats:");
+            int totalSeats = int.Parse(Console.ReadLine());
+
+            if (totalSeats <= 0)
+            {
+                Console.WriteLine("Eroro: Total seats cannot be less than 0 ");
+                return;
+            }
+
+            int newAirCraft = FlightContext.aircrafts.Count + 1;
+
+            Aircraft newAircraft = new Aircraft
+            {
+                aircraftId =  newAirCraft,
+                model = aircraftName,
+                totalSeats = totalSeats,
+                isOperational = true
+
+            };
+
+            FlightContext.aircrafts.Add(newAircraft);
+            Console.WriteLine($" Aircraft registered successfully! Your ID is: {newAirCraft} ");
+
+            
+
+
 
 
         }//2
