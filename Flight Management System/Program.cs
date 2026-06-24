@@ -25,7 +25,7 @@
             return int.Parse(Console.ReadLine());
 
 
-        }
+        }//Mainmenu
         public static void RegisterPassenger()
         {
 
@@ -104,46 +104,57 @@
                 switch (mainMenue())
                 {
                     case 1:
+                        RegisterPassenger();
                         break;
 
 
                     case 2:
+                        AddAircraft();
                         break;
 
 
                     case 3:
+                        RegisterPilot();
                         break;
 
 
                     case 4:
+                        ViewFlights();
                         break;
 
 
                     case 5:
+                        SchedulFlight();
                         break;
 
 
                     case 6:
+                        BookFlight();
                         break;
 
 
                     case 7:
+                        CancelBooking();
                         break;
 
 
                     case 8:
+                        DepartFlight();
                         break;
 
 
                     case 9:
+                        CancelFlight();
                         break;
 
 
                     case 10:
+                        PassengerBookingHistory();
                         break;
 
 
                     case 11:
+                        FlightRevenue();
                         break;
 
                     default:
