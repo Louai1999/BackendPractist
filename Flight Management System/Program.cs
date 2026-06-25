@@ -188,8 +188,6 @@ namespace Flight_Management_System
         {
             Console.Write("Enter aircraft ID :  ");
             int choiceAircraft = int.Parse(Console.ReadLine());
-
-
             // Still i didnt understand this 
             Aircraft selectedAircraft = FlightContext.aircrafts.FirstOrDefault(a => a.aircraftId == choiceAircraft);
 
@@ -261,11 +259,27 @@ namespace Flight_Management_System
 
         public static void BookFlight()
         {
+            Console.WriteLine("Please enter passenger id:  ");
+            int passId = int.Parse(Console.ReadLine());
+
+            Passenger selectedPassenger = FlightContext.passengers.FirstOrDefault(p => p.passengerId == passId);    
+            
+            if(selectedPassenger == null)
+            {
+                Console.WriteLine("Erorr : please select correct passenger id");
+                return;
+            }
+
+            Console.Write("Please select destination :");
+            string destaination = Console.ReadLine();
+
+
+                
 
 
 
 
-        }//6
+        }//6 still
 
         public static void CancelBooking()
         {
