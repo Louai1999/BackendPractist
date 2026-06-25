@@ -176,10 +176,9 @@ namespace Flight_Management_System
                 Console.WriteLine($"Available seats : {flighte.availableSeats}");
                 Console.WriteLine($"Ticket price : {flighte.ticketPrice}");
                 Console.WriteLine($"Last ststus : {flighte.status}");
-                
+
 
             }
-            
 
 
 
@@ -187,12 +186,83 @@ namespace Flight_Management_System
 
         public static void SchedulFlight()
         {
+            Console.Write("Enter aircraft ID :  ");
+            int choiceAircraft = int.Parse(Console.ReadLine());
 
 
-        }//5
+            // Still i didnt understand this 
+            Aircraft selectedAircraft = FlightContext.aircrafts.FirstOrDefault(a => a.aircraftId == choiceAircraft);
+
+            
+            if (selectedAircraft == null )
+            {
+                Console.WriteLine("Error: Aircraft not found ");
+                return;
+            }
+
+
+            Console.WriteLine("Enter pilot Id : ");
+            int choicePilot = int.Parse(Console.ReadLine());
+
+            Pilot selectedPilot = FlightContext.pilots.FirstOrDefault(p => p.pilotId == choicePilot);
+
+
+            Console.Write("Enter Origin (From): ");
+            string origin = Console.ReadLine();
+
+            Console.Write("Enter Destination (To): ");
+            string destination = Console.ReadLine();
+
+            Console.Write("Enter Ticket Price (OMR): ");
+            decimal price = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Enter Departure Date (e.g., 2026-07-01): ");
+            string depDate = Console.ReadLine();
+
+            Console.Write("Enter Departure Time (e.g., 10:00 AM): ");
+            string depTime = Console.ReadLine();
+
+
+
+            int nextFlightId = FlightContext.flights.Count + 1;
+            string autoFlightCode = "BM" + nextFlightId.ToString("D3");
+
+
+
+            Flight newFlight = new Flight
+            {
+                flightcode = autoFlightCode,
+                origin = origin,
+                destination = destination,
+                departureDate = depDate,
+                departureTime = depTime,
+                ticketPrice = price,
+
+
+
+
+                availableSeats = selectedAircraft.totalSeats,
+
+                status = "Scheduled"
+            };
+            FlightContext.flights.Add(newFlight);
+
+                Console.WriteLine("\n=======================================");
+                Console.WriteLine("         FLIGHT SCHEDULED          ");
+                Console.WriteLine("=======================================");
+                Console.WriteLine($"Flight Code   : {newFlight.flightcode}");
+                Console.WriteLine($"Route         : {newFlight.origin} ➔ {newFlight.destination}");
+                Console.WriteLine($"Seats Avail.  : {newFlight.availableSeats} (from Aircraft {selectedAircraft.aircraftId})");
+                Console.WriteLine($"Status        : {newFlight.status}");
+                Console.WriteLine("=======================================");
+                Console.WriteLine(" Flight successfully added to the system!");
+
+            }//5
 
         public static void BookFlight()
         {
+
+
 
 
         }//6
