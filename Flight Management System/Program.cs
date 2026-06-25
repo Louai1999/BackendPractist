@@ -1,4 +1,7 @@
 ﻿using Flight_Management_System.Models;
+using System.ComponentModel;
+using System.Numerics;
+using System.Xml.Linq;
 
 namespace Flight_Management_System
 {
@@ -9,6 +12,7 @@ namespace Flight_Management_System
 
         public static int mainMenue()
         {
+            Console.WriteLine("*************************************************");
             Console.WriteLine("1. Register Passenger ");
             Console.WriteLine("2. Add Aircraft");
             Console.WriteLine("3. Register Pilot");
@@ -21,6 +25,7 @@ namespace Flight_Management_System
             Console.WriteLine("10. Passenger Booking History");
             Console.WriteLine("11. Flight Revenue");
             Console.WriteLine("0.Exit");
+            Console.WriteLine("*************************************************");
 
             Console.WriteLine("");
             Console.WriteLine("==Select option==");
@@ -54,7 +59,7 @@ namespace Flight_Management_System
             };
 
             FlightContext.passengers.Add(newPassenger);
-            Console.WriteLine($"\n Passenger registered successfully! Your ID is: {newId}");
+            Console.WriteLine($"\n Passenger registered successfully! Your ID is: {newPassenger.passengerId.ToString ("D3")}");
 
         }//1
 
@@ -103,12 +108,79 @@ namespace Flight_Management_System
 
         public static void RegisterPilot()
         {
+            Console.WriteLine("Hello pilot enter your name: ");
+            string pilotName = Console.ReadLine();
+
+            Console.WriteLine($"Mr/Miss {pilotName}  Enter your phone number: ");
+            string pilotPhones = Console.ReadLine();
+
+            Console.WriteLine("Enter your license Number: ");
+            string licenseNumbers = Console.ReadLine();
+
+            Console.WriteLine("How many flight hours");
+            int flightHour = int.Parse(Console.ReadLine());
+
+
+            int newPilotId = FlightContext.pilots.Count + 1;
+
+            Pilot newPilot = new Pilot
+            {
+                pilotId = newPilotId,
+                pilotName = pilotName,
+                pilotPhone = pilotPhones,
+                licenseNumber = licenseNumbers,
+                flightHours = flightHour,
+
+
+                isAvailable = true
+
+            };
+                
+            FlightContext.pilots.Add(newPilot);
+            Console.WriteLine($"Pilot added successfully your id is : {newPilot.pilotId.ToString("D3")}");
+
+            Console.WriteLine($"Hello {newPilot.pilotName}, your ID is: {newPilot.pilotId.ToString("D3")}");
+            Console.WriteLine($"Phone number: {pilotPhones}");
+            Console.WriteLine($"License number: {licenseNumbers}");
+            Console.WriteLine($"Your active flight:{flightHour}");
+
+            Console.WriteLine("");
+            Console.WriteLine("Pilot registered successfully");
+
+
+
+
+
+
+
+
+
 
 
         }//3
 
         public static void ViewFlights()
         {
+            if(FlightContext.flights.Count == 0 )
+            {
+                Console.WriteLine("Sorry no flights found! ");
+                return;
+            }
+
+            foreach (Flight flighte in FlightContext.flights) 
+            {
+                Console.WriteLine($"Flight code  :  {flighte.flightcode}");
+                Console.WriteLine($"Flight origin  : {flighte.origin} ");
+                Console.WriteLine($"Flight destination  : {flighte.destination}");
+                Console.WriteLine($"Flight departure Date&Time {(flighte.departureDate) + (flighte.departureTime)}");
+                Console.WriteLine($"Available seats : {flighte.availableSeats}");
+                Console.WriteLine($"Ticket price : {flighte.ticketPrice}");
+                Console.WriteLine($"Last ststus : {flighte.status}");
+                
+
+            }
+            
+
 
 
         }//4
@@ -233,6 +305,7 @@ namespace Flight_Management_System
             }
 
 
+            Console.WriteLine("Good bye!");
 
 
         }
