@@ -252,7 +252,8 @@ namespace Flight_Management_System
                 Console.WriteLine($"Route         : {newFlight.origin} ➔ {newFlight.destination}");
                 Console.WriteLine($"Seats Avail.  : {newFlight.availableSeats} (from Aircraft {selectedAircraft.aircraftId})");
                 Console.WriteLine($"Status        : {newFlight.status}");
-                Console.WriteLine("=======================================");
+                Console.WriteLine("=======================================");//
+                Console.WriteLine("");
                 Console.WriteLine(" Flight successfully added to the system!");
 
             }//5
