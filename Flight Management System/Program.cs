@@ -79,17 +79,22 @@ namespace Flight_Management_System
 
 
 
-            int newId = FlightContext.passengers.Count + 1;
-            Passenger newPassenger = new Passenger
+            int newId = context.Passengers.Count + 1;
+            context.Passengers.Add(new Passenger
             {
-                passengerId =newId,
+                passengerId = newId,
                 passengerName = PsName,
-                passengerPhone = PhNumber
-            };
+                passengerPhone = PhNumber,
+                passengerEmail = psEmail,
+                passportNumber = psPassport,
+                nationality = psNationality
 
-            FlightContext.passengers.Add(newPassenger);
-            Console.WriteLine($"\n Passenger registered successfully! Your ID is: {newPassenger.passengerId.ToString ("D3")}");
+            });
 
+           
+            
+            Console.WriteLine($"\n Passenger registered successfully! Your ID is: {newId.ToString ("D3")}");
+            
         }//1
 
         public static void AddAircraft()
@@ -114,18 +119,18 @@ namespace Flight_Management_System
                 return;
             }
 
-            int newAirCraft = FlightContext.Aircrafts.Count + 1;
+            int newAirCraft = context.Aircrafts.Count + 1;
 
-            Aircraft newAircraft = new Aircraft
+            context.Aircrafts.Add(new Aircraft
             {
                 aircraftId =  newAirCraft,
                 model = aircraftName,
                 totalSeats = totalSeats,
                 isOperational = true
 
-            };
+            });
 
-            FlightContext.aircrafts.Add(newAircraft);
+            
             Console.WriteLine($" Aircraft registered successfully! Your ID is: {newAirCraft} ");
 
             
@@ -150,7 +155,7 @@ namespace Flight_Management_System
             int flightHour = int.Parse(Console.ReadLine());
 
 
-            int newPilotId = FlightContext.pilots.Count + 1;
+            int newPilotId = context.Pilots.Count + 1;
 
             Pilot newPilot = new Pilot
             {
@@ -165,7 +170,7 @@ namespace Flight_Management_System
 
             };
                 
-            FlightContext.pilots.Add(newPilot);
+            context.Pilots.Add(newPilot);
             Console.WriteLine($"Pilot added successfully your id is : {newPilot.pilotId.ToString("D3")}");
 
             Console.WriteLine($"Hello {newPilot.pilotName}, your ID is: {newPilot.pilotId.ToString("D3")}");
@@ -190,13 +195,13 @@ namespace Flight_Management_System
 
         public static void ViewFlights()
         {
-            if(FlightContext.flights.Count == 0 )
+            if(context.Flights.Count == 0 )
             {
                 Console.WriteLine("Sorry no flights found! ");
                 return;
             }
 
-            foreach (Flight flighte in FlightContext.flights) 
+            foreach (Flight flighte in context.Flights) 
             {
                 Console.WriteLine($"Flight code  :  {flighte.flightcode}");
                 Console.WriteLine($"Flight origin  : {flighte.origin} ");
@@ -218,7 +223,7 @@ namespace Flight_Management_System
             Console.Write("Enter aircraft ID :  ");
             int choiceAircraft = int.Parse(Console.ReadLine());
             // Still i didnt understand this 
-            Aircraft selectedAircraft = FlightContext.aircrafts.FirstOrDefault(a => a.aircraftId == choiceAircraft);
+            Aircraft selectedAircraft = context.Aircrafts.FirstOrDefault(a => a.aircraftId == choiceAircraft);
 
             
             if (selectedAircraft == null )
@@ -231,7 +236,7 @@ namespace Flight_Management_System
             Console.WriteLine("Enter pilot Id : ");
             int choicePilot = int.Parse(Console.ReadLine());
 
-            Pilot selectedPilot = FlightContext.pilots.FirstOrDefault(p => p.pilotId == choicePilot);
+            Pilot selectedPilot = context.Pilots.FirstOrDefault(p => p.pilotId == choicePilot);
 
 
             Console.Write("Enter Origin (From): ");
@@ -251,7 +256,7 @@ namespace Flight_Management_System
 
 
 
-            int nextFlightId = FlightContext.flights.Count + 1;
+            int nextFlightId = context.Flights.Count + 1;
             string autoFlightCode = "BM" + nextFlightId.ToString("D3");
 
 
@@ -272,7 +277,7 @@ namespace Flight_Management_System
 
                 status = "Scheduled"
             };
-            FlightContext.flights.Add(newFlight);
+            context.Flights.Add(newFlight);
 
                 Console.WriteLine("\n=======================================");
                 Console.WriteLine("         FLIGHT SCHEDULED          ");
@@ -292,7 +297,7 @@ namespace Flight_Management_System
             Console.WriteLine("Please enter passenger id:  ");
             int passId = int.Parse(Console.ReadLine());
 
-            Passenger selectedPassenger = FlightContext.passengers.FirstOrDefault(p => p.passengerId == passId);    
+            Passenger selectedPassenger = context.Passengers.FirstOrDefault(p => p.passengerId == passId);    
             
             if(selectedPassenger == null)
             {
