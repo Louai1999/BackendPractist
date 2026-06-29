@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flight_Management_System.Models
 {
-    internal class Passenger
+    public class Passenger
     {
         public int passengerId {  get; set; }
         public string passengerName { get; set; }

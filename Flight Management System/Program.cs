@@ -7,7 +7,16 @@ namespace Flight_Management_System
 {
     internal class Program
     {
+        //System storage 
+        public static FlightContext context = new FlightContext()
+        {
+            Passengers = new List<Passenger>(),
+            Aircrafts = new List<Aircraft>(),
+            Flights = new List<Flight>(),
+            Pilots = new List<Pilot>(),
+            Bookings = new List<Booking>()
 
+        };
 
 
         public static int mainMenue()
@@ -85,7 +94,7 @@ namespace Flight_Management_System
                 return;
             }
 
-            int newAirCraft = FlightContext.aircrafts.Count + 1;
+            int newAirCraft = FlightContext.Aircrafts.Count + 1;
 
             Aircraft newAircraft = new Aircraft
             {
@@ -253,7 +262,7 @@ namespace Flight_Management_System
                 Console.WriteLine($"Seats Avail.  : {newFlight.availableSeats} (from Aircraft {selectedAircraft.aircraftId})");
                 Console.WriteLine($"Status        : {newFlight.status}");
                 Console.WriteLine("=======================================");//
-                Console.WriteLine("");
+                Console.WriteLine(" ");
                 Console.WriteLine(" Flight successfully added to the system!");
 
             }//5

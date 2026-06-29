@@ -1,17 +1,19 @@
 ﻿using Flight_Management_System.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Text;
 
 namespace Flight_Management_System
 {
-    internal class FlightContext
+    public class FlightContext 
     {
-    public static List<Passenger>  passengers {  get; set; } =new List<Passenger>();
-    public static List<Pilot> pilots { get; set; } = new List<Pilot>();
-    public static List<Aircraft> aircrafts { get; set; } =new List<Aircraft>();
-    public static List<Flight> flights { get; set; } = new List<Flight>();
-        public static List<Booking> bookings { get; set; } = new List<Booking>();
+
+        public List<Passenger> Passengers {  get; set; }
+        public List<Aircraft> Aircrafts { get; set; }
+        public List<Booking> Bookings { get; set; }
+        public List<Pilot> Pilots { get; set; }
+        public List<Flight> Flights { get; set; }
     
     }
 }
