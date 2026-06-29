@@ -59,6 +59,26 @@ namespace Flight_Management_System
             double PhNumber = double.Parse (Console.ReadLine());
             Console.WriteLine($"{PsName} your phone number is {PhNumber}");
 
+            Console.WriteLine("Please enter your email: ");
+            string psEmail = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(psEmail))
+            { 
+                Console.WriteLine("Error: Email should not be empty!");
+                return;
+            }
+
+            Console.WriteLine("Please enter your passport Number");
+            string psPassport = Console.ReadLine();
+
+
+
+
+            Console.WriteLine("Please enter your nationality");
+            string psNationality = Console.ReadLine();
+
+
+
+
             int newId = FlightContext.passengers.Count + 1;
             Passenger newPassenger = new Passenger
             {
