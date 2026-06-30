@@ -18,6 +18,52 @@ namespace Flight_Management_System
 
         };
 
+        //System Variables
+        public static int choice;
+        public static bool validationFlag;
+
+        //Passenger variables
+        public static string PsName;
+
+
+        //System Methods
+        public static void ErrorCatch(ref int num)
+        {
+            try
+            {
+                num = int.Parse(Console.ReadLine());
+               
+            }catch(FormatException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                validationFlag = false;
+            }
+        }
+        public static void ErrorCatch(ref string value)
+        {
+            try
+            {
+                value = Console.ReadLine();      
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                validationFlag = false;
+            }
+        }
+
+
+        //Validation Method
+        public static string CheckIfEmpty(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                Console.WriteLine("Error: Passenger name cannot be empty");
+                return null;
+            }
+            return value;
+        }
+
 
         public static int mainMenue()
         {
@@ -38,24 +84,35 @@ namespace Flight_Management_System
 
             Console.WriteLine("");
             Console.WriteLine("==Select option==");
-            return int.Parse(Console.ReadLine());
+
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }catch(FormatException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                choice = -1;
+            }
+            
+
+            return choice;
 
 
         }//Mainmenu
         public static void RegisterPassenger()
         {
             Console.WriteLine("Please enter your name:");
-            string PsName = Console.ReadLine();
+            ErrorCatch(ref PsName);
+            if (!validationFlag) { return; }
+            PsName = CheckIfEmpty(PsName);
+            if(PsName == null) { return; }
             
-            if (string.IsNullOrWhiteSpace(PsName))
-            {
-                Console.WriteLine("Error: Passenger name cannot be empty");
-                return;
-            }
+                 
             Console.WriteLine($"Hello welcome:  {PsName}");
 
 
             Console.WriteLine("Please enter phone number: ");
+            
             double PhNumber = double.Parse (Console.ReadLine());
             Console.WriteLine($"{PsName} your phone number is {PhNumber}");
 
@@ -89,6 +146,8 @@ namespace Flight_Management_System
                 passportNumber = psPassport,
                 nationality = psNationality
 
+               
+
             });
 
            
@@ -99,43 +158,46 @@ namespace Flight_Management_System
 
         public static void AddAircraft()
         {
-            Console.WriteLine("Please enter Airccraft model:");
-            string aircraftName = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(aircraftName))
-
-            {
-                Console.WriteLine("Error: AirCraft model cannot be empty . ");
-                return ;
-            }
-
-
-            Console.WriteLine("Please enter total seats:");
-            int totalSeats = int.Parse(Console.ReadLine());
-
-            if (totalSeats <= 0)
-            {
-                Console.WriteLine("Eroro: Total seats cannot be less than 0 ");
-                return;
-            }
-
-            int newAirCraft = context.Aircrafts.Count + 1;
-
-            context.Aircrafts.Add(new Aircraft
-            {
-                aircraftId =  newAirCraft,
-                model = aircraftName,
-                totalSeats = totalSeats,
-                isOperational = true
-
-            });
-
             
-            Console.WriteLine($" Aircraft registered successfully! Your ID is: {newAirCraft} ");
+            {
+                Console.WriteLine("Please enter Airccraft model:");
+                string aircraftName = Console.ReadLine();
 
-            
+                if (string.IsNullOrWhiteSpace(aircraftName))
+
+                {
+                    Console.WriteLine("Error: AirCraft model cannot be empty . ");
+                    return;
+                }
 
 
+                Console.WriteLine("Please enter total seats:");
+                int totalSeats = int.Parse(Console.ReadLine());
+
+                if (totalSeats <= 0)
+                {
+                    Console.WriteLine("Eroro: Total seats cannot be less than 0 ");
+                    return;
+                }
+
+                int newAirCraft = context.Aircrafts.Count + 1;
+
+                context.Aircrafts.Add(new Aircraft
+                {
+                    aircraftId = newAirCraft,
+                    model = aircraftName,
+                    totalSeats = totalSeats,
+
+                    isOperational = true
+
+                });
+
+
+                Console.WriteLine($" Aircraft registered successfully! Your ID is: {newAirCraft} ");
+
+
+
+            }
 
 
         }//2
@@ -355,6 +417,7 @@ namespace Flight_Management_System
             bool exit = false;
             while (exit == false)
             {
+                validationFlag = true;
                 switch (mainMenue())
                 {
                     case 1:
@@ -409,6 +472,9 @@ namespace Flight_Management_System
 
                     case 11:
                         FlightRevenue();
+                        break;
+
+                    case -1:
                         break;
 
                     default:
