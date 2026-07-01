@@ -6,15 +6,15 @@ namespace E_Commerce_System_ERD___Models.Model
 {
     public class Product
     {
-        public int productId { get; set; }
-        public string productName { get; set; }
-        public string description { get; set; }
-        public decimal price { get; set; }
-        public int stockQuantity { get; set; }
-        public string imageUrl { get; set; }
-        public int categoryId { get; set; }
-        public DateTime createdAt { get; set; }
-        public bool isAvailable { get; set; }
+        public int productId { get; set; } // System generated 
+        public string productName { get; set; } // User input 
+        public string description { get; set; } // User input 
+        public decimal price { get; set; } // Calculated 
+        public int stockQuantity { get; set; } // Calculated 
+        public string imageUrl { get; set; } // User input
+        public int categoryId { get; set; } // Foreign key 
+        public DateTime createdAt { get; set; } // Calcilated
+        public bool isAvailable { get; set; } // Defualt value 
 
 
     }
