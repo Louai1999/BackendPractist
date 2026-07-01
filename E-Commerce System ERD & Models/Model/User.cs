@@ -6,15 +6,15 @@ namespace E_Commerce_System_ERD___Models.Model
 {
     public class User
     {
-        public int userId { get; set; }
-        public string userName { get; set; }
-        public string email { get; set; }
-        public string passwordHash { get; set; }
-        public string fullName { get; set; }
-        public string phoneNember { get; set; }
-        public string address { get; set; }
-        public DateTime registrationDate { get; set; }
-        public bool isActive { get; set;  }
+        public int userId { get; set; }// system generated 
+        public string userName { get; set; } // user input
+        public string email { get; set; } // user input
+        public string passwordHash { get; set; } // user input 
+        public string fullName { get; set; } // user input 
+        public string phoneNember { get; set; } // user input 
+        public string address { get; set; } // user input
+        public DateTime registrationDate { get; set; }//calculated 
+        public bool isActive { get; set;  } // Defult value 
 
 
 
