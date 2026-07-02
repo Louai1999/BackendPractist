@@ -25,6 +25,13 @@ namespace E_Commerce_System_ERD___Models.Model
 
 
 
+        //Relationship
+
+        public ICollection<Product> Products { get; set; } // Navigation property 
+
+
+
+
 
     }
 }

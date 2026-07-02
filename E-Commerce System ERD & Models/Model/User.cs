@@ -38,6 +38,13 @@ namespace E_Commerce_System_ERD___Models.Model
         public bool isActive { get; set; } = true;// Defult value 
 
 
+        //Relationship 
+        public ICollection<Order> orders { get; set; } //Navigation property
+
+        public ICollection<Review> reviews { get; set; } //Navigation property
+
+
+
 
 
 

@@ -13,8 +13,8 @@ namespace E_Commerce_System_ERD___Models.Model
         [Key,Required , DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int orderId { get; set; }//System generated 
 
-        [ForeignKey("userId"),Required]
-        public int userId { get; set; } // Foreign key
+        //[ForeignKey("userId"),Required]
+        //public int userId { get; set; } // Foreign key
 
         [Required]
         public DateTime orderDate { get; set; } // Calculated 
@@ -30,5 +30,18 @@ namespace E_Commerce_System_ERD___Models.Model
 
         [Required,MaxLength(50)]
         public string paymentMethod { get; set; }// Calculated 
+
+
+
+
+        //Relationship 
+        [ForeignKey("Category")]
+        public int userId { get; set; } // Foreign key property 
+        public User User { get; set; } //Navigation property
+
+        public ICollection<Product> products { get; set; } // Navigation property 
+
+
+
     }
 }
