@@ -27,7 +27,7 @@ namespace E_Commerce_System_ERD___Models.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "users",
+                name: "users", 
                 columns: table => new
                 {
                     userId = table.Column<int>(type: "int", nullable: false)
