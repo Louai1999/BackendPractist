@@ -21,7 +21,7 @@ namespace E_Commerce_System_ERD___Models.Model
         public string? description { get; set; } // User input 
 
 
-        [Required, Range(0, double.MaxValue)]
+        [Required, Range(0.1, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
         public decimal price { get; set; } // Calculated 
 
 
@@ -49,6 +49,8 @@ namespace E_Commerce_System_ERD___Models.Model
         [ForeignKey("Category")]
         public int CategoryId { get; set; } // Foreign key property 
         public Category Category { get; set; } // Navigation property
+
+        public ICollection<OrderItem> OrderItems { get; set; }
 
         public ICollection<Review> reviews { get; set; } // Navigation property 
 

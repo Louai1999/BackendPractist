@@ -6,7 +6,7 @@ using System.Text;
 
 namespace E_Commerce_System_ERD___Models.Model
 {
-    internal class OrderItem
+    public class OrderItem
     {
         [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int orderItemId { get; set; } // System generated
