@@ -5,6 +5,7 @@ namespace E_Commerce_System_ERD___Models
     internal class Program
     {
 
+        ECommerceContext db = new ECommerceContext();
 
 
         //MainMenu
@@ -73,7 +74,7 @@ namespace E_Commerce_System_ERD___Models
                 Console.WriteLine("Error");
 
             }
-        }
+        } //01
 
 
 
@@ -105,7 +106,7 @@ namespace E_Commerce_System_ERD___Models
 
 
 
-        }
+        } //02
 
 
 
@@ -132,12 +133,61 @@ namespace E_Commerce_System_ERD___Models
 
 
 
-        }
+        }//03 Still not completed
 
 
         public static void RroductReview (ECommerceContext context)
 
         {
+            Console.WriteLine("Users list");
+
+            var userList = context.users.ToList();
+
+            foreach (var u in userList) //
+            {
+                Console.WriteLine($"User number: [{u.userId}] | Name: {u.userName}");
+            }
+
+            Console.WriteLine("Please enter  user id ");
+            int userReview = int.Parse(Console.ReadLine());
+
+
+            Console.WriteLine("Product List");
+            var productList = context.products.ToList();
+
+            foreach (var P in  productList)
+            {
+                Console.WriteLine($"Product number: [{P.productId}] | Name: {P.productName}");
+
+            }
+
+
+            Console.WriteLine ("please enter product Id ");
+            int pId = int .Parse(Console.ReadLine());
+
+
+            Console.WriteLine ("Please write your rate about the product :  ");
+            int rating = int .Parse(Console.ReadLine());
+
+            Console.WriteLine ("Please adde comment ");
+            string comment = Console.ReadLine();
+
+
+
+            Review newReview = new Review
+            {
+                userId = userReview,
+                productId = pId,
+                rating = rating,
+                comment = comment,
+                reviewDate = DateTime.Now,
+            };
+
+
+            context.reviews.Add(newReview);
+            context.SaveChanges();
+            Console.WriteLine("Revoew added successfully ");
+
 
 
         }
