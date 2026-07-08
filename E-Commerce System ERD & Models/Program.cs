@@ -49,12 +49,36 @@ namespace E_Commerce_System_ERD___Models
                 string uname = Console.ReadLine();
                 Console.Write("Enter Email: ");
                 string email = Console.ReadLine();
+                Console.WriteLine("Enter password ");
+                string pssUser = Console.ReadLine();
+                Console.WriteLine("Enter your full name ");
+                string fName = Console.ReadLine();
+                Console.WriteLine("Enter phone number ");
+                string pNumber = Console.ReadLine();
+                Console.WriteLine("address");
+                string addrese = Console.ReadLine();
+                Console.WriteLine("Registration Date");
+
+                
+         
+
+
+
+
+
+
 
                 User newUser = new User
                 {
                     userName = uname,
                     email = email,
                     registrationDate = DateTime.Now,
+                    passwordHash = pssUser,
+                    fullName = fName,
+                    phoneNember = pNumber,
+                    address = addrese,
+
+
                     isActive = true
                 };
 
