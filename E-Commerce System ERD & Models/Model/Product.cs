@@ -30,9 +30,9 @@ namespace E_Commerce_System_ERD___Models.Model
 
         [MaxLength(300)]
         public string? imageUrl { get; set; } // User input
-
-        [ForeignKey("categoryId"),Required]
-        public int categoryId { get; set; } // Foreign key 
+//
+        //[ForeignKey("categoryId"),Required]
+       // public int categoryId { get; set; } // Foreign key 
 
         [Required]
         public DateTime createdAt { get; set; } // Calcilated
@@ -46,8 +46,8 @@ namespace E_Commerce_System_ERD___Models.Model
         public ICollection<Order> orders { get; set; } // Navigation property 
 
 
-        [ForeignKey("Category")]
-        public int CategoryId { get; set; } // Foreign key property 
+        [ForeignKey("category")]
+        public int categoryId { get; set; } // Foreign key property 
         public Category Category { get; set; } // Navigation property
 
         public ICollection<OrderItem> OrderItems { get; set; }

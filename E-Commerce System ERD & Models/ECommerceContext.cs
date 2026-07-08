@@ -22,4 +22,6 @@ namespace E_Commerce_System_ERD___Models
                 optionsBuilder.UseSqlServer(@"Server=Louai;Database=ECommerceDB;Trusted_Connection=True;TrustServerCertificate=True;");
 
             }
+        }
+    }
 }
