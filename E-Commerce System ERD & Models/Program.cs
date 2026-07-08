@@ -122,10 +122,72 @@ namespace E_Commerce_System_ERD___Models
         }
 
 
+        public static void RroductReview (ECommerceContext context)
 
-
-            static void Main(string[] args)
         {
+
+
+        }
+           
+            
+        public static void UbdateProduct(ECommerceContext context)
+        {
+
+
+        }
+
+        public static void CancelOrder (ECommerceContext context)
+
+        {
+
+
+        }
+        public static void DeleteReview(ECommerceContext context)
+        {
+
+
+        }
+
+        public static void VewAllProduct(ECommerceContext context)
+        {
+
+
+        }
+
+        public static void FilterProduct(ECommerceContext context)
+        {
+
+
+        }
+
+        public static void GetCategory(ECommerceContext context)
+
+        {
+
+
+        }
+        public static void OrderHistory(ECommerceContext context)
+
+        {
+
+
+        }
+        public static void ProductSummaryReport(ECommerceContext context)
+        {
+
+
+        }
+
+
+
+
+
+
+
+        static void Main(string[] args)
+        {
+
+            ECommerceContext db = new ECommerceContext();
 
             bool exit = false;
             while (exit == false)
@@ -134,51 +196,75 @@ namespace E_Commerce_System_ERD___Models
                 {
 
                     case 1:
+                        RegisterNewUser(db);
+
                         break;
 
 
 
                     case 2:
+                        AddProductToCategory(db);
+
                         break;
 
 
                     case 3:
+                        PlaceOrder(db);
+
                         break;
 
 
                     case 4:
+                        RroductReview(db);
+
                         break;
 
 
                     case 5:
+
+                        UbdateProduct(db);
                         break;
 
 
                     case 6:
+                        CancelOrder(db);
+
                         break;
 
 
                     case 7:
+                        DeleteReview(db);
+
                         break;
 
 
                     case 8:
+                        VewAllProduct(db);
+
                         break;
 
 
                     case 9:
+                        FilterProduct(db);
+
                         break;
 
 
                     case 10:
+
+                        GetCategory(db);
                         break;
 
 
                     case 11:
+                        OrderHistory(db);
+
                         break;
 
 
                     case 12:
+
+                        ProductSummaryReport(db);   
                         break;
 
                     case 0:
