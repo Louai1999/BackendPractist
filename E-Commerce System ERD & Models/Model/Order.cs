@@ -36,7 +36,7 @@ namespace E_Commerce_System_ERD___Models.Model
         public int userId { get; set; } // Foreign key property 
         public User User { get; set; } //Navigation property
 
-        public ICollection<OrderItem> orderItemId { get; set; } // Navigation property 
+        public ICollection<OrderItem> OrderItems { get; set; } // Navigation property 
 
 
 
