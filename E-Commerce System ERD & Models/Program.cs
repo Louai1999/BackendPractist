@@ -195,7 +195,29 @@ namespace E_Commerce_System_ERD___Models
             
         public static void UbdateProduct(ECommerceContext context)
         {
+            Console.WriteLine("Enter the product ID :");
+            int pId = int .Parse(Console.ReadLine());
+            var product   = context.products.FirstOrDefault(p => p.productId ==  pId);
 
+            if (product != null)
+            {
+
+                Console.WriteLine("Enter the new Price:");
+                product.price = decimal.Parse(Console.ReadLine());
+
+                Console.WriteLine("is Product available? true / false ");
+                product. isAvailable = bool.Parse(Console.ReadLine());
+
+
+
+
+                product.price = 25;
+                context.SaveChanges();
+
+
+                Console.WriteLine("Price ubdated done ");
+
+            }
 
         }
 
