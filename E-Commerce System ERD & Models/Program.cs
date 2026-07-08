@@ -41,25 +41,38 @@ namespace E_Commerce_System_ERD___Models
 
         public static void RegisterNewUser(ECommerceContext context)
         {
-            Console.WriteLine("\n--- 01: Register New User ---");
-            Console.Write("Enter Username: ");
-            string uname = Console.ReadLine();
-            Console.Write("Enter Email: ");
-            string email = Console.ReadLine();
-
-            User newUser = new User
+            try
             {
-                userName = uname,
-                email = email,
-                registrationDate = DateTime.Now,
-                isActive = true
-            };
+                Console.WriteLine("\n--- 01: Register New User ---");
+                Console.Write("Enter Username: ");
+                string uname = Console.ReadLine();
+                Console.Write("Enter Email: ");
+                string email = Console.ReadLine();
 
-            context.users.Add(newUser); // 
-            context.SaveChanges();      // SQL
+                User newUser = new User
+                {
+                    userName = uname,
+                    email = email,
+                    registrationDate = DateTime.Now,
+                    isActive = true
+                };
 
-            Console.WriteLine($"User registered successfully! Assigned ID: {newUser.userId}");
+                context.users.Add(newUser); // 
+                context.SaveChanges();      // SQL
 
+                Console.WriteLine($"User registered successfully! Assigned ID: {newUser.userId}");
+            }
+            catch (Microsoft.Data.SqlClient.SqlException ex)
+            {
+                Console.WriteLine("Error");
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error");
+
+            }
         }
 
 
