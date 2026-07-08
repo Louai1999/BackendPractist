@@ -15,18 +15,18 @@ namespace E_Commerce_System_ERD___Models
             Console.WriteLine(" E-Commerce System EF Core Migration & CRUD");
             Console.WriteLine("=================================");
 
-            Console.WriteLine("1. Add New Room");
-            Console.WriteLine("2. Register New Guest");
-            Console.WriteLine("3. Book a Room for a Guest");
-            Console.WriteLine("4. Search & Filter Rooms");
-            Console.WriteLine("5. Guest & Booking Statistics");
-            Console.WriteLine("6. Check Out a Guest");
-            Console.WriteLine("7. Remove Unavailable Rooms");
-            Console.WriteLine("8. Add New Room");
-            Console.WriteLine("9. Add New Room");
-            Console.WriteLine("10. Add New Room");
-            Console.WriteLine("11. Add New Room");
-            Console.WriteLine("12. Add New Room");
+            Console.WriteLine("1. Register a New User");
+            Console.WriteLine("2. Add a New Product to a Category");
+            Console.WriteLine("3. Place an Order");
+            Console.WriteLine("4. Write a Product Review");
+            Console.WriteLine("5. Update Product Price and Availability");
+            Console.WriteLine("6. Cancel an Order");
+            Console.WriteLine("7. Delete a Review");
+            Console.WriteLine("8. View All Products (Get All)");
+            Console.WriteLine("9. Filter Products by Category and Price Range");
+            Console.WriteLine("10. Get Category with All Its Products (Include)");
+            Console.WriteLine("11.  View Order History with Full Details\r\n(ThenInclude");
+            Console.WriteLine("12.  Product Summary Report (Projection + Lazy\r\nLoading)");
 
             Console.WriteLine("0. exit");
             Console.WriteLine("=================================");
