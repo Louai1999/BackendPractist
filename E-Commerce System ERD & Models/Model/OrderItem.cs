@@ -26,7 +26,7 @@ namespace E_Commerce_System_ERD___Models.Model
         public int quantity { get; set; } //    Calculated 
 
         [Required, Range(0.1, double.MaxValue)]
-        public decimal unitPrice { get; set; } //Calculated
+        public decimal unitPrice{ get; set; } //Calculated
 
 
     }
